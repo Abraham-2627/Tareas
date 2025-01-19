@@ -1,42 +1,50 @@
 Proceso EncuentraMayorEnArreglo
     Definir longitud Como Entero;
-    Definir numeros Como Entero;
+    Definir numeros Como Arreglo de Enteros;
     Definir mayor Como Entero;
+    
     longitud <- obtenerTamañoArreglo;
- 
-    Dimension numeros(longitud);
-    generarArregloAleatorio(longitud, numeros);
- 
+    Dimension numeros(longitud);  // Crear arreglo de longitud definida
+
+    generarArregloAleatorio(longitud, numeros);  // Generar arreglo aleatorio
+
     Escribir "Éxito: Arreglo generado.";
+    
     Para indice <- 1 Hasta longitud Hacer
-        Escribir "Valor ", indice, ": ", numeros(indice);
+        Escribir "Valor ", indice, ": ", numeros(indice);  // Imprimir el contenido del arreglo
     FinPara
- 
-    mayor <- encontrarMayor(longitud, numeros);
+
+    mayor <- encontrarMayor(longitud, numeros);  // Encontrar el valor mayor del arreglo
     Escribir "Valor más grande: ", mayor;
 FinProceso
 
+// Función para obtener el tamaño del arreglo
 Funcion tamaño <- obtenerTamañoArreglo
     Definir tamaño Como Entero;
     Escribir "Ingrese el tamaño del arreglo:";
     Leer tamaño;
+    Retornar tamaño;  // Retorna el tamaño ingresado
 FinFuncion
 
+// Subproceso para generar un arreglo con números aleatorios
 Subproceso generarArregloAleatorio(longitud, arreglo)
     Definir contador Como Entero;
     
     Para contador <- 1 Hasta longitud Hacer
-        arreglo(contador) <- Aleatorio(1, 100); 
+        arreglo(contador) <- Aleatorio(1, 100);  // Asigna un número aleatorio entre 1 y 100
     FinPara
 FinSubproceso
 
+// Función para encontrar el valor mayor en el arreglo
 Funcion mayor <- encontrarMayor(longitud, arreglo)
     Definir mayor, contador Como Entero;
-    mayor <- arreglo(1);
- 
+    mayor <- arreglo(1);  // Inicializa 'mayor' con el primer valor del arreglo
+
     Para contador <- 2 Hasta longitud Hacer
         Si arreglo(contador) > mayor Entonces
-            mayor <- arreglo(contador);
+            mayor <- arreglo(contador);  // Si el número actual es mayor, lo asigna como mayor
         FinSi
     FinPara
+
+    Retornar mayor;  // Retorna el mayor valor encontrado
 FinFuncion
